@@ -1,0 +1,49 @@
+# Kafka-Training
+
+# To start Confluent kafka services post installation
+# go to kafka installation directory and export into PATH variable
+
+Cd Users/fatsingh/Documents/installs/confluent-7.2.0
+export CONFLUENT_HOME=/Users/fatsingh/Documents/installs/confluent-7.2.0
+export PATH=$PATH:$CONFLUENT_HOME/bin     
+
+# start services                          
+confluent local services start                                          
+confluent local services status
+
+##################################################################################################
+
+
+# to start Kafka server using open source Kafka installation 
+
+# Go to kafka installation directory
+# Start zookeeper
+./bin/zookeeper-server-start ./config/zookeeper.properties 
+
+# Start kafka server
+./bin/kafka-server-start ./config/server.properties 
+
+
+##################################################################################################
+
+# Create topic
+./bin/kafka-topics.sh --create --replication-factor 1 --partitions 1 --topic testTopic --bootstrap-server 127.0.0.1:9092
+
+./bin/kafka-topics.sh --list --bootstrap-server 127.0.0.1:9092
+
+/bin/kafka-topics.sh --describe --bootstrap-server 127.0.0.1:9092 --topic testTopic
+
+##################################################################################################
+
+# Create producer and consumer
+
+./bin/kafka-console-producer.sh --bootstrap-server 127.0.0.1:9092 --topic testTopic
+
+./bin/kafka-console-consumer.sh --topic testTopic --bootstrap-server localhost:9092
+
+./bin/kafka-console-consumer.sh --topic testTopic --bootstrap-server localhost:9092 --from-beginning
+
+./bin/kafka-console-consumer.sh --topic testTopic --bootstrap-server localhost:9092  --group CG1
+
+./bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testTopic < lines.txt
+
