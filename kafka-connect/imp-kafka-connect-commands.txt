@@ -1,0 +1,13 @@
+-- installation steps for connector
+-- url to  find connectors https://www.confluent.io/hub/#file%20stream
+
+brew tap confluentinc/homebrew-confluent-hub-client
+brew install --cask confluent-hub-client
+confluent-hub
+
+
+confluent-hub install confluentinc/kafka-connect-datagen:0.6.0
+confluent-hub install confluentinc/kafka-connect-jdbc:latest
+
+—Check list of running connectors
+confluent local services connect connector list

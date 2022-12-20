@@ -1,0 +1,13 @@
+{
+  "name": "FileStreamSinkConnectorConnector_0",
+  "config": {
+    "connector.class": "org.apache.kafka.connect.file.FileStreamSinkConnector",
+    "tasks.max": "1",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+    "key.converter.schemas.enable": "false",
+    "topics": "transactions",
+    "file": "/Users/fatsingh/Documents/installs/file-output/transactions-topic-data.txt"
+  }
+}
